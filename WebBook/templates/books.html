@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title> {{ title }} </title>
+</head>
+<body>
+    <h1> {{ title }} </h1>
+    <div>
+      {% for book in page.object_list  %}
+      {% if book.cover %}
+      <img src="{{ book.cover.url }}" alt="" style="max-width:20px; max-height:20px"/> <br>
+      {% else %}
+      <img src="{{ not_found }}" alt="" style="max-width:20px; max-height:20px"/> <br>
+      {% endif %}
+        {{ book.name.verbose_name }} : {{ book.name }}  <br>
+        {{ book.genre.verbose_name}} : {{ book.genre}}  <br>
+        {{ book.year.verbose_name }} : {{ book.year }} <br> 
+        {{ book.id_author.verbose_name }} : {{ book.id_author.fio }} <br>
+        <a href="{% url 'view_book' book.id %}">Посмотреть детали</a> <br>
+        <br/>
+        <hr>
+      {% endfor %}
+    </div>
+    <!-- навигация по страницам  << < Сраница 3 > >> -->
+    <div>
+      {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}"> &lt; </a>
+      {% else %}
+        &nbsp;  &lt; &nbsp;
+      {% endif %}
+        Страница {{ page.page_number }}
+      {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}"> &gt; </a>
+      {% else %}
+        &nbsp; &gt; &nbsp;
+      {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="{% url 'view_image' %}?img=Pushik.jpg" alt="Пушкин" style="max-width:200px; max-height:200px">
+    <img src="{% url 'view_image' %}?img=Abay.jpg"  alt="Абай" style="max-width:200px; max-height:200px">
+    <img src="{% url 'view_image' %}?img=Lermontov.jpg" alt="Лермонтов" style="max-width:200px; max-height:200px">
+</body>
+</html>
